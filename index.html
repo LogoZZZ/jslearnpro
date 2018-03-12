@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>至O2(伪企业介绍)</title>
+    <style>
+        #bodyer .div1{
+            padding: 0;
+            width: 550px;height: 500px;
+        }
+        #bodyer .div2{
+            padding: 0;
+            width: 550px;height: 500px;
+            
+        }
+        #bodyer .div3{
+            padding: 0;
+            width: 550px;height: 500px;
+           
+        }
+        #bodyer .div4{
+            padding: 0;
+            width: 550px;height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+    <div id="bodyer">
+        
+    </div>
+    <div id="footer"></div>
+
+    <script>
+    (function(){
+    var 
+    id="bodyer";
+    n=5,
+    igr=[
+        "",
+        "img/pg1.jpg",
+        "img/pg2.jpg",
+        "img/pg3.png",
+        "img/pg4.jpg",
+        "img/pg5.png"],
+    t=[];
+    var out = {
+        divId:"",
+        num:0,
+        imgRoute:[],
+        txt:[],
+        init:function(divId,num,imgRoute,txt){
+            this.divId=divId;this.num=num;this.imgRoute=imgRoute;this.txt=txt;
+            this.createDiv(this.divId,this.num);
+            this.setImgRoute(this.imgRoute);
+        },
+        createDiv:function(id,n){
+            try{
+                typeof n == 'number';
+                var element=document.getElementById(id);
+                var para,node;
+                for(var i=1;i<=n;i++){
+                para=document.createElement("div");
+                node=document.createAttribute("class");
+                node.nodeValue="div"+i;
+                para.setAttributeNode(node);
+                element.appendChild(para);
+            }
+            }catch(e){
+                console.log("num not number");
+            };
+        },
+        setImgRoute:function(route){
+            try{
+                typeof route == 'object';
+                var L=route.length;
+                var setting;
+                for(var i=1;i<=L;i++){
+                    setting=document.querySelector(".div"+i).style;
+                    setting.backgroundImage="url("+route[i]+")";
+                }
+            }catch(e){
+                console.log("imgroute not object/array");
+            }
+        }
+
+    }
+    out.init(id,n,igr,t)
+    console.log(2)
+    }())
+    
+    </script>
+</body>
+</html>

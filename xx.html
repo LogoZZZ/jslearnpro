@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <style>
+        .div1{background-color: black;}
+        .div2{
+            width: 100px;height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="idname" class="div1 div2"></div>
+    <script>
+        // function f(){
+        //    var element=document.getElementById("idname");
+        //     var para,node;
+        //         para=document.createElement("div");
+        //         node=document.createAttribute("class");
+        //         node.nodeValue="div"+1;
+        //         para.setAttributeNode(node);
+        //         element.appendChild(para); 
+        // }
+        // f();
+    //     var y=["222","eeee"];
+    //     var n=[];
+    //     n=y
+    //    console.log(typeof n =="object");
+    //     function xx(){
+    //         var tt=document.querySelector(".div"+2).style
+    //         tt.height="2000px";
+    //     }
+    //     xx()
+
+        // var a=[200,300]
+        // for(app in a){
+        //     var y=a[app];
+        //     var z=app;
+        //     var n=y*z;
+        //     console.log(n);
+        // }
+        var inherit=function(p){
+            if(p ==null) throw TypeError();
+            if(Object.create) return Object.create(p);
+            var t=typeof p;
+            if(p !=="object" && p!=="function") throw TypeError();
+            function f(){};
+            f.prototype=p;
+            return new f();
+        }
+        var o={};
+        o.x=1;
+        var oo=inherit(o);
+        oo.y=2;
+        oo.z=3;
+        for(u in oo){
+            console.log(oo[u])
+        }
+        //改变属性的特性
+Object.defineProperty(oo,"y",{
+    enumerable:false
+})
+        console.log(Object.keys(oo))
+        //批量
+        var oo=Object.defineProperties({},{
+            y:{},
+            z:{enumerable:false,}
+        })
+        console.log(Object.keys(oo))
+    </script>
+</body>
+</html>
